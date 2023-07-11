@@ -1,8 +1,7 @@
-import {FeedbackOptions} from "./FeedBack/Feedback";
-import {Statistics} from "./Statictics/Statistics";
+import { FeedbackOptions, Statistics, Section, Notification} from "components";
+
 
 import {Component} from "react";
-// import PropTypes from "prop-types";
 
  class App extends Component{
   state = {
@@ -26,8 +25,15 @@ countPositiveFeedbackPercentage = () => {
   
   return (
     <div>
+<Section title='Please leave your feedback'>
 <FeedbackOptions options={this.state} onLeaveFeedback={this.onHandleFeedback} />
-<Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />
+</Section>
+<Section title='Feedback Statistics'>
+{this.countTotalFeedback() === 0 
+? <Notification message="There is no feedback"></Notification>
+: <Statistics good={this.state.good} neutral={this.state.neutral} bad={this.state.bad} total={this.countTotalFeedback()} positivePercentage={this.countPositiveFeedbackPercentage()} />}
+
+</Section>
     </div>
   );
 }}

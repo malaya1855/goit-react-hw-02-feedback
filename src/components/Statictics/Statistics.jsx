@@ -1,12 +1,18 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
+import { StatisticsField } from "components";
 
-export const Statistics = ({ good, neutral, bad, total, positivePercentage}) => { return  <div>
-    <h2>Feedback Statistics</h2>
-    <ul>
-    <li>Good: {good}</li>
-    <li>Neutral: {neutral}</li>
-    <li>Bad: {bad}</li>
-    </ul>
+export const Statistics = ({ good, neutral, bad, total, positivePercentage}) => { return  <StatisticsField>
+    <p>Good: {good}</p>
+    <p>Neutral: {neutral}</p>
+    <p>Bad: {bad}</p>
     <p>Total: {total}</p>
     <p>Positive feedback: {positivePercentage} %</p>
-    </div>}
+    </StatisticsField>}
+
+Statistics.propTypes = {
+    good: PropTypes.number.isRequired, 
+    neutral: PropTypes.number.isRequired, 
+    bad: PropTypes.number.isRequired,
+    total: PropTypes.number.isRequired, 
+    positivePercentage: PropTypes.number.isRequired,
+  };

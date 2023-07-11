@@ -1,16 +1,22 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
+import { ButtonFeedback, FieldFeedback } from "components";
 
 export const FeedbackOptions = ({options, onLeaveFeedback}) => {
         return (
-    <div>
-        <h2>Please leave your feedback</h2>
+    <FieldFeedback>
         {Object.keys(options).map((item) => {
 const nameItem = item.replace(item[0], item[0].toUpperCase());
-return <button 
+return <ButtonFeedback 
 onClick = {onLeaveFeedback}
 type='button'
 key={item} 
 name= {item}>
 {nameItem}
-</button>})}
-        </div>)}
+</ButtonFeedback>})}
+        </FieldFeedback>)}
+
+FeedbackOptions.propTypes = {
+    options: PropTypes.shape
+    ({item: PropTypes.string}).isRequired,
+    onLeaveFeedback: PropTypes.func.isRequired, 
+  };

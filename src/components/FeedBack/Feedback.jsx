@@ -4,11 +4,11 @@ import { ButtonFeedback, FieldFeedback } from 'components';
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <FieldFeedback>
-      {Object.keys(options).map(item => {
+      {options.map(item => {
         const nameItem = item.replace(item[0], item[0].toUpperCase());
         return (
           <ButtonFeedback
-            onClick={onLeaveFeedback}
+            onClick={() => onLeaveFeedback(item)}
             type="button"
             key={item}
             name={item}
@@ -22,6 +22,6 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
 };
 
 FeedbackOptions.propTypes = {
-  options: PropTypes.shape({ item: PropTypes.string }).isRequired,
+  options: PropTypes.arrayOf(PropTypes.string).isRequired,
   onLeaveFeedback: PropTypes.func.isRequired,
 };
